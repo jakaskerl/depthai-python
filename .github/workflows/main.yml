@@ -51,9 +51,9 @@ jobs:
           sudo apt install libusb-1.0-0-dev clang-10
           python -m pip install -r docs/requirements_mkdoc.txt
       - name: Configure project
-        run: cmake -S . -B build -DDEPTHAI_PYTHON_FORCE_DOCSTRINGS=ON -DDEPTHAI_PYTHON_DOCSTRINGS_OUTPUT="$PWD/docstrings/depthai_python_docstring.hpp"
+        run: CC=clang-10 CXX=clang++-10 cmake -S . -B build -DDEPTHAI_PYTHON_FORCE_DOCSTRINGS=ON -DDEPTHAI_PYTHON_DOCSTRINGS_OUTPUT="$PWD/docstrings/depthai_python_docstring.hpp"
       - name: Build target 'pybind11_mkdoc'
-        run: cmake --build build --target pybind11_mkdoc --parallel 4
+        run: CC=clang-10 CXX=clang++-10 cmake --build build --target pybind11_mkdoc --parallel 4
       - name: Upload docstring artifacts
         uses: actions/upload-artifact@v3
         with:
