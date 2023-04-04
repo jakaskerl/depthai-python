@@ -48,7 +48,7 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          sudo apt install libusb-1.0-0-dev
+          sudo apt install libusb-1.0-0-dev clang-10
           python -m pip install -r docs/requirements_mkdoc.txt
       - name: Configure project
         run: cmake -S . -B build -DDEPTHAI_PYTHON_FORCE_DOCSTRINGS=ON -DDEPTHAI_PYTHON_DOCSTRINGS_OUTPUT="$PWD/docstrings/depthai_python_docstring.hpp"
